@@ -3,7 +3,7 @@
 yum update -y && yum install curl wget -y
 
 #backtest
-wget https://files.ioiox.com/projects/besttrace/besttrace.sh && chmod +x besttrace.sh 
+wget https://raw.githubusercontent.com/q1248/someScripts/master/server/install.sh
 
 #ss脚本
 bash <(curl -sL https://raw.githubusercontent.com/hijkpw/scripts/master/centos_install_ss.sh)
