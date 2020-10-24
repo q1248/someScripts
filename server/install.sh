@@ -2,13 +2,15 @@
 #安装curl
 yum update -y && yum install curl wget -y
 
-#backtest
-wget https://raw.githubusercontent.com/q1248/someScripts/master/server/install.sh
-
+read -p  "intall v2ray(1) or ss(2) ?" choose1
+if (( $choose1==1 ))
+then
+bash <(curl -s -L https://git.io/v2ray.sh)
+else
 #ss脚本
 bash <(curl -sL https://raw.githubusercontent.com/hijkpw/scripts/master/centos_install_ss.sh)
-
-read -p "vps的构架:(1)kvm (2)OpenVZ" choose
+fi
+read -p "vps的构架:(1)kvm (2)OpenVZ (3)nothing" choose
 if (( $choose == 1 ))
 then
 #安装bbr加速脚本
@@ -20,7 +22,12 @@ wget https://raw.githubusercontent.com/kuoruan/shell-scripts/master/ovz-bbr/ovz-
 chmod +x ovz-bbr-installer.sh
 ./ovz-bbr-installer.sh
 fi
-#关闭centos7的防火墙
-systemctl stop firewalld.service #停止firewall
 
-systemctl disable firewalld.service #禁止firewall开机启动
+if (( $choose == 3 ))
+then
+				echo "nothing to do "
+fi
+#关闭centos7的防火墙
+systemctl stop firewalld #停止firewall
+
+systemctl disable firewalld #禁止firewall开机启动
