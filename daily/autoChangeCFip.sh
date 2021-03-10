@@ -10,12 +10,11 @@ do
 				kill $var1
 done
 
-keyword="heroku kinTaiWan rusiacf ibm kinAmerica"
+keyword="rusian heroku ibm kinAmerica"
 cfIP=$(sed 's/\./\\./g' ~/myping.txt)
 for var in $keyword
 				do
 								filename=$(grep $var -B 2 ~/.config/qv2ray/connections.json | grep { | grep -oE "[a-z]*")
-
 							  sed -r -i '11,40 s/[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}/'$cfIP'/g' ~/.config/qv2ray/connections/$filename.qv2ray.json
-
 				done
+
